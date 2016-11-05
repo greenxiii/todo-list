@@ -1,0 +1,34 @@
+<div class="col-md-6 col-md-offset-3 centered-wrapper">
+    <h2>Sign up</h2>
+    <form name="signupForm" ng-submit="signUp(signupForm)" novalidate>
+        <div ng-if="error" class="alert alert-danger">{{error}}</div>
+        <div class="form-group" ng-class="{ 'has-error': signupForm.email.$invalid && !signupForm.email.$pristine }">
+            <label for="email">Email</label>
+            <input type="email" name="email" class="form-control" ng-model="email" required />
+            <p ng-show="signupForm.email.$invalid && !signupForm.email.$pristine" class="help-block">Email is not valid.</p>
+        </div>
+        <div class="form-group" ng-class="{ 'has-error': signupForm.firstName.$invalid && !signupForm.firstName.$pristine }">
+            <label for="firstName">First Name</label>
+            <input type="text" name="firstName" class="form-control" ng-model="firstName" required />
+            <p ng-show="signupForm.firstName.$invalid && !signupForm.firstName.$pristine" class="help-block">First name is required.</p>
+        </div>
+        <div class="form-group" ng-class="{ 'has-error': signupForm.lastName.$invalid && !signupForm.lastName.$pristine }">
+            <label for="lastName">Last Name</label>
+            <input type="text" name="lastName" class="form-control" ng-model="lastName" required />
+            <p ng-show="signupForm.lastName.$invalid && !signupForm.lastName.$pristine" class="help-block">Last name is required.</p>
+        </div>
+        <div class="form-group" ng-class="{ 'has-error': signupForm.password.$invalid && !signupForm.password.$pristine }">
+            <label for="password">Password</label>
+            <input type="password" name="password" class="form-control" ng-model="password" required />
+            <p ng-show="signupForm.password.$invalid && !signupForm.password.$pristine" class="help-block">Password is required.</p>
+        </div>
+        <div class="form-group">
+            <button ng-disabled="loading || signupForm.$invalid" class="btn btn-primary col-xs-12">Sign Up</button>
+            <img ng-if="authCtrl.loading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
+        </div>
+        <div class="form-group">
+            <div class="btn btn-primary col-xs-12 fb-btn" ng-click="fbLogin()">Sign up via Facebook</div>
+            <a ui-sref="login" class="">Login</a>
+        </div>
+    </form>
+</div>
