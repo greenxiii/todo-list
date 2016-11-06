@@ -1,19 +1,37 @@
-<div class="container todo-layout">
+<div class="todo-layout">
 	<div ng-show="projects[0]">
-		<div ng-repeat="project in projects">
-			<div class="project-title">{{project.title}}</div>
-			<i class="fa fa-plus" data-toggle="modal" data-target="#addTask" ng-click="todoCtrl.currentProjectId = project._id; todoCtrl.currentTask = ''"></i>
-			<i class="fa fa-pencil" data-toggle="modal" data-target="#editProject" ng-click="todoCtrl.currentProject = project"></i>
-			<i class="fa fa-times" ng-click="removeProject(project._id)"></i>
+		<div ng-repeat="project in projects" class="project-wrapper">
+			<div class="title">
+				<i class="fa fa-calendar"></i>
+				<h3>{{project.title}}</h3>
+				<div class="tools">
+					<i class="fa fa-trash" ng-click="removeProject(project._id)"></i>
+					<i class="fa fa-pencil" data-toggle="modal" data-target="#editProject" ng-click="todoCtrl.currentProject = project"></i>
+				</div>
+			</div>
+			<form name="addTaskForm" class="add-task-form" novalidate>
+			    <div class="form-group">
+		        	<i class="fa fa-plus"></i>
+			        <div class="input-group">
+				        <input type="text" name="title" class="form-control" ng-model="title" required />
+		            	<span class="input-group-btn">
+					        <button ng-click="addTask(addTaskForm, project._id)" ng-disabled="addTaskForm.$invalid" class="btn btn-success pull-right">Add Task</button>
+		              	</span>
+		            </div>
+			    </div>
+			</form>
 			<div ng-show="project.tasks[0]">
-				<div class="row" ng-repeat="task in project.tasks">
-					<div class="col-xs-4 task-title">{{ task.title }}</div>
-					<div class="col-xs-1 task-priority">{{ task.priority }}</div>
-					<div class="col-xs-3 task-deadline">{{ task.deadline | date : 'medium' : timezone }}</div>
-					<div class="col-xs-1 task-status" ng-click="changeTaskStatus(task._id, task.status)">{{ task.status }}</div>
-					<div class="col-xs-1">
+				<div class="todo-item" ng-repeat="task in project.tasks">
+					<div class="task-status" ng-click="changeTaskStatus(task._id, task.status)">
+						<input id="status-check-{{task._id}}" type="checkbox" ng-checked="task.status"/>
+						<label for="status-check-{{task._id}}"></label>
+					</div>
+					<div class="task-title">{{ task.title }}</div>
+					<div class="task-priority">{{ task.priority }}</div>
+					<div class="task-deadline">{{ task.deadline | date : 'medium' : timezone }}</div>
+					<div class="tools">
 						<i class="fa fa-pencil" data-toggle="modal" data-target="#editTask" ng-click="todoCtrl.currentTask = task"></i>
-						<i class="fa fa-times" ng-click="removeTask(task._id)"></i>
+						<i class="fa fa-trash" ng-click="removeTask(task._id)"></i>
 					</div>
 				</div>
 			</div>
@@ -25,7 +43,7 @@
 	<div ng-show="!projects[0]">
 		Project list is empty
 	</div>
-	<div class="btn btn-primary" data-toggle="modal" data-target="#addProject" ng-click="todoCtrl.currentProject = ''">Add project</div>
+	<div class="btn btn-primary btn-lg" data-toggle="modal" data-target="#addProject" ng-click="todoCtrl.currentProject = ''"><i class="fa fa-plus"></i><span>Add TODO list</span></div>
 
 	<div id="addProject" class="modal fade" role="dialog">
 		<div class="modal-dialog">
@@ -71,30 +89,6 @@
 				<div class="modal-footer">
 					<button type="button" class="btn btn-default pull-left" data-dismiss="modal">Cancel</button>
 			        <button ng-click="editProject(editProjectForm)" ng-disabled="editProjectForm.$invalid" class="btn btn-primary pull-right">Save</button>
-				</div>
-			</div>
-		</div>
-	</div>
-	<div id="addTask" class="modal fade" role="dialog">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal">&times;</button>
-					<h4 class="modal-title">Add Task</h4>
-				</div>
-				<div class="modal-body">
-					<form name="addTaskForm" novalidate>
-					    <div ng-if="error" class="alert alert-danger">{{error}}</div>
-					    <div class="form-group" ng-class="{ 'has-error': addTaskForm.title.$invalid && !addTaskForm.title.$pristine }">
-					        <label for="title">Task Title</label>
-					        <input type="text" name="title" class="form-control" ng-model="title" required />
-					        <p ng-show="addTaskForm.title.$invalid && !addTaskForm.title.$pristine" class="help-block">Title is required.</p>
-					    </div>
-					</form>
-				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-default pull-left" data-dismiss="modal">Cancel</button>
-			        <button ng-click="addTask(addTaskForm)" ng-disabled="addTaskForm.$invalid" class="btn btn-primary pull-right">Create</button>
 				</div>
 			</div>
 		</div>

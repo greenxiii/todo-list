@@ -1,15 +1,9 @@
-//  Fonts
-@mainFont: 'Lato-Italic', sans-serif;
-@secondaryFont-demi: 'glasnost-demi', sans-serif;
-@secondaryFont-extrademi: 'glasnost-extra-demi', sans-serif;
-@secondaryFont-light: 'glasnost-light', sans-serif;
-@socialFont: 'Helv-5', sans-serif;
-@socialLinkFont: 'Helv-4', sans-serif;
+@base-font: sans-serif;
 @size-base: 16px;
 
 //  Base Colors
 @color-base: #000;
-@secondary-color: #e6ba0e;
+@secondary-color: @brand-success;
 @secondary-color-darker: #986e08;
 @mainContainerBg: rgba(79, 130, 115, 0.7); //#4f8273;
 @mainContainerBgDarker: #657975;
@@ -19,3 +13,16 @@
 @vk-back: #4c75a3;
 @fb-back: #3d5a98;
 @tw-back: #6da9ce;
+.vertical-center {
+	display: flex;
+	flex-flow: row nowrap;
+	align-items: center;
+}
+.inset-text(@color) {
+	background: @color;
+	color: transparent;
+	text-shadow: 0px 2px 3px rgba(255,255,255,0.25);
+	-webkit-background-clip: text;
+	-moz-background-clip: text;
+	background-clip: text;
+}

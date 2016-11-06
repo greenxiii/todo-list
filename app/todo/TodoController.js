@@ -12,7 +12,6 @@ angular.module('app').controller('TodoController', function($scope, TodoService)
 		self.currentProjectId = '';
 		self.currentProject = '';
 		self.currentTask = '';
-		$scope.addTaskForm.title.$pristine = true;
 		$scope.addProjectForm.title.$pristine = true;
 	};
 	this.refreshProjects();
@@ -41,9 +40,9 @@ angular.module('app').controller('TodoController', function($scope, TodoService)
 		});	
 	};
 
-	$scope.addTask = function(data) {
+	$scope.addTask = function(data, projectId) {
 		var taskTitle = data.title.$viewValue;
-		TodoService.CreateTask(taskTitle, self.currentProjectId, function(res) {
+		TodoService.CreateTask(taskTitle, projectId, function(res) {
 			self.refreshProjects();
 		});
 	};

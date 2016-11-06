@@ -1,3 +1,13 @@
+.vertical-center {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-flow: row nowrap;
+      flex-flow: row nowrap;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
 /*!
  * Bootstrap v3.3.7 (http://getbootstrap.com)
  * Copyright 2011-2016 Twitter, Inc.
@@ -6680,7 +6690,7 @@ button,
 input,
 select,
 textarea {
-  font-family: 'glasnost-light', sans-serif;
+  font-family: sans-serif;
 }
 textarea:hover,
 input:hover,
@@ -6703,9 +6713,9 @@ body {
   font-size: 16px;
   line-height: 1.4;
   color: #000;
-  font-family: 'Lato-Italic', sans-serif;
+  font-family: sans-serif;
   background-position: center 0;
-  background-size: 2000px auto;
+  background: url('https://images.unsplash.com/photo-1470217957101-da7150b9b681?dpr=1&auto=format&fit=crop&w=1199&h=899&q=80&cs=tinysrgb&crop=');
 }
 /*	Apply to all elements. In a responsive design, this is almost always a good idea */
 * {
@@ -6722,9 +6732,9 @@ h4,
 h5,
 h6 {
   margin: 0 0 16px;
-  font-family: 'glasnost-light', sans-serif;
+  font-family: sans-serif;
   line-height: 1.2em;
-  color: #e6ba0e;
+  color: #5cb85c;
   font-weight: 300;
 }
 h1 {
@@ -6763,12 +6773,222 @@ label {
 .clear {
   clear: both;
 }
+.btn-lg,
+.btn-group-lg > .btn {
+  margin: 0 auto;
+  display: block;
+  width: 200px;
+  font-size: 20px;
+}
+.btn-lg span {
+  margin-left: 10px;
+}
+.btn-lg .fa {
+  background: #1d4568;
+  color: transparent;
+  text-shadow: 0px 2px 3px rgba(255, 255, 255, 0.25);
+  -webkit-background-clip: text;
+  background-clip: text;
+  font-size: 25px;
+}
 .centered-wrapper {
-  margin-top: 30vh;
+  margin-top: 20vh;
 }
 .centered-wrapper h2 {
+  font-weight: 800;
   text-align: center;
   text-transform: uppercase;
+}
+.centered-wrapper .fb-btn {
+  margin-top: 15px;
+}
+.main-layout h2 {
+  font-weight: 800;
+  text-align: center;
+  margin: 20px 0;
+}
+.main-layout h2 .fa {
+  cursor: pointer;
+}
+.project-wrapper .title {
+  height: 50px;
+  line-height: 50px;
+  display: block;
+  background: -webkit-linear-gradient(#4f84bf 0%, #2d5192 100%);
+  background: linear-gradient(#4f84bf 0%, #2d5192 100%);
+  border-top: 1px solid #afafaf;
+  border-right: 1px solid #234d98;
+  border-left: 1px solid #234d98;
+  padding: 0 12px;
+}
+.project-wrapper .title h3 {
+  margin: 0 6px 0;
+  display: inline-block;
+  color: #fff;
+  text-shadow: 0 1px 1px rgba(39, 39, 39, 0.6);
+  font-size: 1rem;
+}
+.project-wrapper .title > .fa {
+  background: -webkit-linear-gradient(#000000, #171717);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: rgba(0, 0, 0, 0.6);
+  text-shadow: 2px 2px 3px rgba(255, 255, 255, 0.1);
+  font-size: 25px;
+}
+.project-wrapper .title .tools {
+  float: right;
+  height: 100%;
+  padding: 17px 0;
+}
+.project-wrapper .title .tools .fa {
+  float: right;
+  cursor: pointer;
+  color: rgba(255, 255, 255, 0.75);
+  padding: 0 10px;
+  -webkit-transition: .25s;
+          transition: .25s;
+  border-right: 1px solid rgba(255, 255, 255, 0.2);
+}
+.project-wrapper .title .tools .fa:first-child {
+  padding: 0 0 0 10px;
+  border: 0;
+}
+.project-wrapper .title .tools .fa:hover {
+  color: #ffffff;
+}
+.project-wrapper .add-task-form {
+  background: -webkit-linear-gradient(#dedede 0%, #cdcdcd 100%);
+  background: linear-gradient(#dedede 0%, #cdcdcd 100%);
+}
+.project-wrapper .add-task-form .form-group {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-flow: row nowrap;
+      flex-flow: row nowrap;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 50px;
+  margin: 0;
+}
+.project-wrapper .add-task-form .fa-plus {
+  font-size: 25px;
+  width: 20px;
+  margin: 0 15px;
+  background: #357935;
+  color: transparent;
+  text-shadow: 0px 2px 3px rgba(255, 255, 255, 0.25);
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+.project-wrapper .add-task-form .input-group {
+  width: calc(100% - 80px);
+}
+.project-wrapper .todo-item {
+  min-height: 40px;
+  margin: 0;
+  border: 1px solid #eee;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-flow: row nowrap;
+      flex-flow: row nowrap;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: stretch;
+      -ms-flex-align: stretch;
+          align-items: stretch;
+  background: #fff;
+  -webkit-transition: .2s;
+          transition: .2s;
+}
+.project-wrapper .todo-item > div {
+  padding: 10px 0;
+}
+.project-wrapper .todo-item .task-status {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-flow: row nowrap;
+      flex-flow: row nowrap;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  min-height: 40px;
+  padding: 0 10px;
+  border-right: 4px double rgba(255, 0, 0, 0.4);
+}
+.project-wrapper .todo-item .task-status input[type=checkbox] {
+  display: none;
+}
+.project-wrapper .todo-item .task-status input[type=checkbox] + label:before {
+  font-family: FontAwesome;
+  display: inline-block;
+  content: "\f096";
+  letter-spacing: 7px;
+}
+.project-wrapper .todo-item .task-status input[type=checkbox]:checked + label:before {
+  content: "\f046";
+  letter-spacing: 5px;
+}
+.project-wrapper .todo-item .task-status input[type=checkbox] + label {
+  text-align: center;
+  margin: 0 0 0 5px;
+  cursor: pointer;
+}
+.project-wrapper .todo-item .task-title {
+  width: 50%;
+}
+.project-wrapper .todo-item .task-title,
+.project-wrapper .todo-item .task-priority,
+.project-wrapper .todo-item .task-deadline {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-flow: row nowrap;
+      flex-flow: row nowrap;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.project-wrapper .todo-item .tools {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-flow: row nowrap;
+      flex-flow: row nowrap;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 70px;
+  padding: 11px 0;
+  margin-right: 15px;
+  border-left: 1px solid #eee;
+  text-align: center;
+}
+.project-wrapper .todo-item .tools .fa {
+  cursor: pointer;
+  padding: 0 12px;
+  color: rgba(0, 0, 0, 0.75);
+  border-right: 1px solid rgba(0, 0, 0, 0.2);
+}
+.project-wrapper .todo-item .tools .fa:last-child {
+  padding: 0 0 0 10px;
+  border: 0;
+}
+.project-wrapper .todo-item .tools .fa:hover {
+  color: #000000;
+}
+.project-wrapper .todo-item:hover {
+  background: #fcfed5;
+}
+.project-wrapper .todo-item:last-child {
+  border-bottom-right-radius: 20px;
+  border-bottom-left-radius: 20px;
+  margin-bottom: 40px;
 }
 .has-error label:after {
   content: '\f071';

@@ -10,7 +10,7 @@ button,
 input,
 select,
 textarea {
-	font-family: @secondaryFont-light;
+	font-family: @base-font;
 	//appearance:none;
 }
 
@@ -38,9 +38,9 @@ body {
 	font-size: @size-base;
 	line-height: 1.4;
 	color: @color-base;
-	font-family: @mainFont;
+	font-family: @base-font;
 	background-position: center 0;
-	background-size: 2000px auto;
+	background: url('https://images.unsplash.com/photo-1470217957101-da7150b9b681?dpr=1&auto=format&fit=crop&w=1199&h=899&q=80&cs=tinysrgb&crop=');
 }
 /*	Apply to all elements. In a responsive design, this is almost always a good idea */
 * {
@@ -55,7 +55,7 @@ body {
 /* Headers */
 h1, h2, h3, h4, h5, h6 {
 	margin: 0 0 @size-base;
-	font-family: @secondaryFont-light;
+	font-family: @base-font;
 	line-height: 1.2em;
 	color: @secondary-color;
 	font-weight: 300;
@@ -102,4 +102,18 @@ label {
 
 .fb-btn {
 	
+}
+
+.btn-lg {
+	margin: 0 auto;
+	display: block;
+	width: 200px;
+	font-size: 20px;
+	span {
+		margin-left: 10px;
+	}
+	.fa {
+		.inset-text(darken(@brand-primary, 20%));
+		font-size: 25px;
+	}
 }
