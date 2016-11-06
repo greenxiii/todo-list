@@ -9,12 +9,16 @@ angular.module('app').controller('TodoController', function($scope, TodoService)
 	};
 	this.clearFields = function() {
 		$scope.title = '';
+		self.currentProjectId = '';
+		self.currentProject = '';
+		self.currentTask = '';
 		$scope.addTaskForm.title.$pristine = true;
 		$scope.addProjectForm.title.$pristine = true;
 	};
 	this.refreshProjects();
 
 	$scope.addProject = function(data) {
+		console.log(data);
 		var projectTitle = data.title.$viewValue;
 		TodoService.CreateProject(projectTitle, function(res) {
 			self.refreshProjects();
@@ -22,8 +26,11 @@ angular.module('app').controller('TodoController', function($scope, TodoService)
 	};
 
 	$scope.editProject = function(data) {
-		var projectTitle = data.title.$viewValue;
-		TodoService.CreateProject(projectTitle, function(res) {
+		var projectId = self.currentProject._id;
+		var newProject = {
+			title: data.title.$viewValue
+		}
+		TodoService.EditProject(projectId, newProject, function(res) {
 			self.refreshProjects();
 		});
 	};
@@ -35,8 +42,20 @@ angular.module('app').controller('TodoController', function($scope, TodoService)
 	};
 
 	$scope.addTask = function(data) {
-		var TaskTitle = data.title.$viewValue;
-		TodoService.CreateTask(TaskTitle, self.currentProjectId, function(res) {
+		var taskTitle = data.title.$viewValue;
+		TodoService.CreateTask(taskTitle, self.currentProjectId, function(res) {
+			self.refreshProjects();
+		});
+	};
+
+	$scope.editTask = function(data) {
+		console.log(self.currentTask);
+		var taskId = self.currentTask._id;
+		var newTask = {
+			title: data.title.$viewValue,
+			priority: self.currentTask.priority
+		}
+		TodoService.EditTask(taskId, newTask, function(res) {
 			self.refreshProjects();
 		});
 	};

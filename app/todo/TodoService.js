@@ -21,6 +21,18 @@ angular.module('app').service('TodoService', function($http, $localStorage, CONF
 		
 	};
 
+	this.EditProject = function(projectId, newProject, callback) {
+		$http.put(CONFIG.apiUrl + '/projects/' + projectId, newProject)
+			.success(function (response) {
+				console.log(response.data);
+				callback(response.data);
+			})
+			.error(function(response) {
+				console.log(response);
+			});
+		
+	};
+
 	this.RemoveProject = function(projectId, callback) {
 		$http.delete(CONFIG.apiUrl + '/projects/' + projectId)
 			.success(function (response) {
@@ -37,7 +49,17 @@ angular.module('app').service('TodoService', function($http, $localStorage, CONF
 			projectId: projectId
 		})
 		.success(function (response) {
-			console.log(response.data);
+			callback(response.data);
+		})
+		.error(function(response) {
+			console.log(response);
+		});
+		
+	};
+
+	this.EditTask = function(taskId, newTask, callback) {
+		$http.put(CONFIG.apiUrl + '/tasks/' + taskId, newTask)
+		.success(function (response) {
 			callback(response.data);
 		})
 		.error(function(response) {
