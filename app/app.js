@@ -1,4 +1,4 @@
-angular.module('app', ['ui.router', 'ngStorage'])
+angular.module('app', ['ui.router', 'ngStorage', 'ui.bootstrap.datetimepicker'])
 	.config(config)
 	.run(run);
 

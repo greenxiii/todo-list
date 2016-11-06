@@ -53,7 +53,17 @@ angular.module('app').controller('TodoController', function($scope, TodoService)
 		var taskId = self.currentTask._id;
 		var newTask = {
 			title: data.title.$viewValue,
-			priority: self.currentTask.priority
+			priority: self.currentTask.priority,
+			deadline: self.currentTask.deadline
+		}
+		TodoService.EditTask(taskId, newTask, function(res) {
+			self.refreshProjects();
+		});
+	};
+
+	$scope.changeTaskStatus = function(taskId, currentStatus) {
+		var newTask = {
+			status: !currentStatus
 		}
 		TodoService.EditTask(taskId, newTask, function(res) {
 			self.refreshProjects();

@@ -9,8 +9,8 @@
 				<div class="row" ng-repeat="task in project.tasks">
 					<div class="col-xs-4 task-title">{{ task.title }}</div>
 					<div class="col-xs-1 task-priority">{{ task.priority }}</div>
-					<div class="col-xs-3 task-deadline">{{ task.deadline | date : format : timezone }}</div>
-					<div class="col-xs-1 task-status">{{ task.status }}</div>
+					<div class="col-xs-3 task-deadline">{{ task.deadline | date : 'medium' : timezone }}</div>
+					<div class="col-xs-1 task-status" ng-click="changeTaskStatus(task._id, task.status)">{{ task.status }}</div>
 					<div class="col-xs-1">
 						<i class="fa fa-pencil" data-toggle="modal" data-target="#editTask" ng-click="todoCtrl.currentTask = task"></i>
 						<i class="fa fa-times" ng-click="removeTask(task._id)"></i>
@@ -125,8 +125,17 @@
 						        <li ng-click="todoCtrl.currentTask.priority = 'High'">High</li>
 						      </ul>
 						    </div>
-					        <input type="hidden" name="priority" class="form-control" ng-model="todoCtrl.currentTask.priority"/>
 					    </div>
+					    <div class="form-group">
+						    <label>Deadline</label> 
+						    <div class="dropdown">
+						        <a  class="dropdown-toggle" id="dropdown1" role="button" data-toggle="dropdown"  href="#">{{ todoCtrl.currentTask.deadline | date : 'medium' : timezone }}</a>
+						        <ul class="dropdown-menu" role="menu">
+						            <datetimepicker data-ng-model="todoCtrl.currentTask.deadline" data-datetimepicker-config="{ dropdownSelector: '#dropdown1' }"/>
+						        </ul>
+						    </div>
+					    </div>
+					    <!-- <datetimepicker data-ng-model="todoCtrl.currentTask.deadline"></datetimepicker> -->
 					</form>
 				</div>
 				<div class="modal-footer">
